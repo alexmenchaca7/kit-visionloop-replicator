@@ -8,15 +8,16 @@
 [![Vercel](https://img.shields.io/badge/Deploy-Vercel-black?logo=vercel)](https://vercel.com)
 [![Claude Code](https://img.shields.io/badge/Powered%20by-Claude%20Code-orange)](https://claude.ai/code)
 
----
+## What it does
 
-## What is this?
-
-A **production-grade agentic pipeline** that takes a URL and autonomously generates a pixel-perfect Next.js clone of any website, page by page. It uses computer vision, multi-agent orchestration, and iterative self-correction to reach ≥99% visual similarity.
-
-You give it a URL. It gives you a deployable Next.js 15 project.
-
----
+- Takes any URL and autonomously generates a pixel-perfect **Next.js 15 clone**, page by page.
+- Runs **5 analyst agents in parallel** (layout, design, typography, components, motion) per page.
+- Runs **N builder agents** to generate each page section independently, then assembles them.
+- Runs **3 comparator agents** (desktop / tablet / mobile) to diff the clone against the original.
+- **Self-corrects per component** until it reaches ≥99% desktop / ≥97% mobile visual similarity.
+- **Freezes design tokens** after the homepage — every subsequent page inherits them with zero inconsistency.
+- Preserves multi-session progress — each page lives in its own isolated folder.
+- Auto-installs all dependencies (Playwright, Sharp, Pixelmatch) on first run.
 
 ## How it works
 
@@ -36,11 +37,11 @@ Claude: [5 analyst agents run in parallel]
         [fixers auto-apply corrections per component]
         → re-compare until ≥99%
 
-Claude: ✅ Homepage done (99.2% similarity)
+Claude: ✅ Homepage done (99.2% similarity). Design tokens frozen.
 
         Next pages detected in navbar:
-          1️⃣  /about  (8-15 min)
-          2️⃣  /pricing (12-20 min)
+          1️⃣  /about   (8–15 min)
+          2️⃣  /pricing (12–20 min)
 
 You: Next: /about
 
@@ -51,35 +52,65 @@ Claude: [reuses Navbar + Footer + frozen design tokens]
 
 No discrepancies between pages — design tokens are frozen after the first page and reused everywhere.
 
----
+## Requirements
 
-## Architecture
+- **Node.js 20+** — [nodejs.org](https://nodejs.org)
+- **Claude Code** (latest) — [claude.ai/code](https://claude.ai/code)
+- **~600 MB disk space**
 
-```
-kit-visionloop-replicator/
-├── CLAUDE.md                        ← agent behavior & workflow rules
-├── INSTRUCCIONES.md                 ← full setup guide
-├── .claude/
-│   └── skills/
-│       └── visionloop-replicator.md ← the agentic pipeline (41 KB)
-└── replica/                         ← generated Next.js project
-    ├── app/                         ← App Router pages
-    ├── components/
-    │   └── sections/
-    │       ├── shared/              ← Navbar, Footer (reused across pages)
-    │       └── pages/
-    │           └── home/            ← page-specific components
-    ├── lib/
-    │   ├── design-tokens.ts         ← frozen after page 1
-    │   └── page-registry.ts         ← updated per new page
-    ├── public/images/
-    │   ├── shared/                  ← logo, global assets
-    │   └── pages/home/              ← page-specific assets
-    ├── references/pages/home/       ← DOM, computed styles, content JSON
-    └── scripts/                     ← capture, compare, crawl, validate
+Everything else (Playwright, Sharp, Pixelmatch, shadcn/ui) installs automatically on first run.
+
+## Installation
+
+```bash
+git clone https://github.com/alexmenchaca7/kit-visionloop-replicator
+cd kit-visionloop-replicator
+claude
 ```
 
----
+To make the skill available in **all** your projects (not just this folder):
+
+```bash
+# macOS / Linux
+mkdir -p ~/.claude/skills
+cp .claude/skills/visionloop-replicator.md ~/.claude/skills/
+
+# Windows
+mkdir "%USERPROFILE%\.claude\skills"
+copy .claude\skills\visionloop-replicator.md "%USERPROFILE%\.claude\skills\"
+```
+
+Restart Claude Code. Now any project can use the skill.
+
+## Usage
+
+Open the folder in Claude Code and send a URL:
+
+```
+Replica https://linear.app
+```
+
+Other valid inputs:
+
+```
+Replica this screenshot    ← drag a PNG/JPG into the chat
+Replica from this HTML     ← paste raw HTML
+Next: /about               ← continue to next page after homepage
+```
+
+To view the result locally:
+
+```bash
+cd replica
+pnpm dev          # open http://localhost:3000
+```
+
+To deploy:
+
+```bash
+cd replica
+npx vercel        # live in ~1 minute
+```
 
 ## Tech stack (generated output)
 
@@ -94,111 +125,57 @@ kit-visionloop-replicator/
 | Testing | Playwright (visual diff) + Pixelmatch |
 | Deploy | Vercel (zero-config) |
 
----
+## Project structure
+
+```
+kit-visionloop-replicator/
+├── CLAUDE.md                          ← agent behavior & workflow rules
+├── INSTRUCCIONES.md                   ← full setup guide (Spanish)
+├── README.md                          ← this file
+├── .claude/
+│   └── skills/
+│       └── visionloop-replicator.md  ← the agentic pipeline (~41 KB)
+└── replica/                           ← generated Next.js project
+    ├── app/                           ← App Router pages
+    ├── components/
+    │   └── sections/
+    │       ├── shared/                ← Navbar, Footer (reused across pages)
+    │       └── pages/
+    │           └── home/              ← page-specific components
+    ├── lib/
+    │   ├── design-tokens.ts           ← frozen after page 1
+    │   └── page-registry.ts           ← updated per new page
+    ├── public/images/
+    │   ├── shared/                    ← logo, global assets
+    │   └── pages/home/                ← page-specific assets
+    ├── references/pages/home/         ← DOM, computed styles, content JSON
+    └── scripts/                       ← capture, compare, crawl, validate
+```
+
+> `replica/` is generated at runtime and is git-ignored. Each page lives in its own isolated subfolder — you can regenerate one page without touching others.
 
 ## Agent pipeline (per page)
 
 | Agent type | Count | Role |
 |---|---|---|
 | **Analysts** | 5 parallel | Dissect layout, design, typography, components, motion |
-| **Builders** | N parallel | Generate page sections independently |
+| **Builders** | N parallel | Generate each page section independently |
 | **Comparators** | 3 parallel | Desktop / tablet / mobile visual diff |
 | **Fixers** | N parallel | Apply component-level corrections |
 
-Self-correction loop runs until ≥99% desktop / ≥97% mobile. After 3 iterations without improvement it regenerates the component from scratch (anti-loop).
+Self-correction loop runs until ≥99% desktop / ≥97% mobile. After 3 iterations without improvement the component is regenerated from scratch (anti-loop guard).
 
----
-
-## Quick start
-
-### Requirements
-- Node.js 20+
-- Claude Code (latest)
-- ~600 MB disk space
-
-Everything else (Playwright, Sharp, Pixelmatch) installs automatically on first run.
-
-### Run
-
-```bash
-git clone https://github.com/AlejandroMenchaca/kit-visionloop-replicator
-cd kit-visionloop-replicator
-claude
-```
-
-Then in the Claude Code chat:
-
-```
-Replica https://linear.app
-```
-
-### Deploy output
-
-```bash
-cd replica
-npx vercel
-```
-
-The `app/[slug]/page.tsx` architecture handles all routes dynamically — deploy at any point during page generation.
-
----
-
-## Page-by-page workflow
-
-```
-SESSION 1 (~15 min):
-  Replica https://linear.app
-  → Claude generates homepage
-  → Design tokens frozen
-
-SESSION 2 (~18 min):
-  Next: /about
-  → Reuses Navbar + Footer + tokens
-  → Generates /about-specific components
-
-SESSION 3 (~20 min):
-  Next: /pricing
-  → ✅ Done
-
-TOTAL: ~50 min → multi-page site, zero inconsistencies
-```
-
-Multi-session: progress is preserved between sessions. Each page lives in its own folder.
-
----
-
-## Key design decisions
-
-**Why page-by-page instead of all at once?**
-Design tokens are extracted and frozen after the homepage. Every subsequent page inherits them — guaranteeing visual consistency without rework.
-
-**Why parallel agents?**
-Each section of a page is analyzed and built independently, then assembled. Fixers run per-component in parallel too — faster convergence, isolated failures.
-
-**Why Next.js App Router + dynamic slug?**
-`app/[slug]/page.tsx` serves all pages from a single route. You can deploy mid-generation and the site works with however many pages exist.
-
----
-
-## Estimated time per page
+### Estimated time per page
 
 | Page type | Time |
 |---|---|
-| Homepage (first) | 8–20 min |
+| Homepage (first — design tokens extracted here) | 8–20 min |
 | Typical page (/about, /pricing) | 8–18 min |
 | Complex page (many sections) | 12–25 min |
 | Full 5-page site | 50–120 min |
 
----
+Progress is preserved between sessions — pick up where you left off.
 
-## Rules (enforced by the agent)
+## License
 
-1. **No invented content** — uses real copy from the site
-2. **No design simplification** — glassmorphism, gradients, everything gets replicated
-3. **No token drift** — design tokens are frozen after page 1
-4. **No shared component modifications** — Navbar + Footer are write-once
-5. **No discrepancies** — that's the point of page-by-page
-
----
-
-**VisionLoop Site Replicator** — Perfect page after perfect page, autonomously.
+MIT
