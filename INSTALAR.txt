@@ -1,0 +1,250 @@
+╔════════════════════════════════════════════════════════════════╗
+║     VisionLoop Site Replicator — Kit Completo                  ║
+║                                                                 ║
+║     Clona sitios web con fidelidad visual ≥99%                 ║
+║     usando multi-agente autónomo + visión computacional        ║
+╚════════════════════════════════════════════════════════════════╝
+
+CONTENIDO DEL KIT
+================
+
+✓ .claude/skills/visionloop-replicator.md  — la skill (copiar a ~/.claude/skills/)
+✓ CLAUDE.md                                 — qué hace, features, requisitos
+✓ INSTRUCCIONES.md                          — guía paso a paso + troubleshooting
+✓ README.md                                 — overview rápido
+✓ INSTALAR.txt                              — este archivo
+
+
+INSTALACIÓN EN CLAUDE CODE
+===========================
+
+Opción 1: DIRECTA (solo este proyecto)
+------
+1. Abre esta carpeta en Claude Code:
+
+   cd kit-visionloop-replicator
+   claude
+
+   O: File → Open Folder → selecciona esta carpeta
+
+2. Escribe cualquier cosa en el chat:
+
+   Hola
+
+3. Claude te dará la bienvenida y activará la skill automáticamente.
+
+4. Envía tu input:
+
+   Replica https://linear.app
+
+   O arrastra un screenshot (PNG/JPG), o pega HTML.
+
+5. Espera 5-25 minutos. Claude genera el proyecto solo.
+
+
+Opción 2: GLOBAL (instala para todos tus proyectos)
+------
+1. Copia el archivo de skill a tu carpeta global:
+
+   WINDOWS:
+   C:\Users\{TuUsuario}\.claude\skills\visionloop-replicator.md
+
+   macOS/Linux:
+   ~/.claude/skills/visionloop-replicator.md
+
+   Cómo copiar:
+   - Abre Explorador/Finder
+   - Navega a: kit-visionloop-replicator/.claude/skills/
+   - Copia visionloop-replicator.md
+   - Ve a tu carpeta global de skills (arriba)
+   - Pégalo
+
+2. Reinicia Claude Code
+
+3. Ahora en CUALQUIER proyecto, di:
+
+   Replica https://ejemplo.com
+
+
+INSTALACIÓN EN VSCODE
+======================
+
+Una vez que la skill generó la carpeta "replica/":
+
+1. Abre el proyecto:
+
+   cd replica
+   code .
+
+2. En VSCode se abre automáticamente.
+
+3. Levanta el dev server en la terminal integrada:
+
+   pnpm dev
+
+   (si no tienes pnpm: npm install -g pnpm)
+
+4. Abre http://localhost:3000 en el navegador
+
+5. Los cambios en el código se ven al guardar (hot reload)
+
+
+CÓMO USAR
+==========
+
+BÁSICO (todo automático):
+------------------------
+claude               # Abre Claude Code en la carpeta
+Replica https://...  # Dile qué replicar
+[espera 5-25 min]    # Claude itera solo hasta ≥99% similitud
+cd replica && pnpm dev  # Ver el resultado en el navegador
+
+
+PERSONALIZAR (editar código):
+-----------------------------
+cd replica
+code .                                    # Abre VSCode
+pnpm dev                                  # Levanta dev server
+# Edita components/sections/*.tsx
+# Edita lib/design-tokens.ts para colores
+# Cambios se ven al guardar (hot reload)
+
+
+DEPLOYAR (subir a internet):
+----------------------------
+cd replica
+npx vercel                               # Sube a Vercel en 1 minuto
+
+
+REQUISITOS MÍNIMOS
+===================
+
+✓ Node.js 20 o superior
+  Verificar: node -v
+  Descargar si falta: https://nodejs.org
+
+✓ ~600 MB libres en disco
+  Para: Next.js + assets + node_modules
+
+✓ Claude Code instalado
+  Descargar: https://claude.ai/code
+
+✓ Internet (para crawling de URLs)
+  Sin requerimiento si usas screenshot/HTML
+
+
+TODO SE AUTO-INSTALA
+====================
+
+La skill auto-instala cuando la lanzas:
+- Playwright + Chromium
+- Sharp (procesamiento de imágenes)
+- Pixelmatch + SSIM (comparación visual)
+- Cheerio (parsing HTML)
+- Framer Motion (animaciones)
+- shadcn/ui (componentes)
+- Lucide Icons (iconografía)
+
+Primera vez tarda ~30 segundos.
+
+
+EJEMPLOS
+========
+
+Ejemplo 1: Replicar landing
+--
+Claude: ¿Qué quieres replicar?
+Tú:     Replica https://linear.app
+[Claude itera ~10 min]
+Tú:     cd replica && pnpm dev
+Resultado: Sitio clonado en http://localhost:3000
+
+
+Ejemplo 2: Desde screenshot
+--
+Tú:     [arrastra screenshot.png]
+Claude: ¿Qué quieres replicar?
+Tú:     Replica este screenshot
+[Claude itera ~15 min, sin crawling]
+
+
+Ejemplo 3: Personalizar después
+--
+cd replica && code .
+# Edita components/sections/Navbar.tsx
+# Cambla colores en lib/design-tokens.ts
+pnpm dev        # Hot reload
+npx vercel      # Deploy
+
+
+TIEMPO ESTIMADO
+===============
+
+URL → réplica lista:           5-25 minutos
+Screenshot → réplica lista:   10-30 minutos
+HTML → réplica lista:          8-20 minutos
+
+(depende de complejidad del sitio)
+
+
+HELP RÁPIDO
+===========
+
+P: ¿Necesito instalar Playwright manualmente?
+R: No. La skill lo hace automáticamente.
+
+P: ¿Cómo cambio colores/tipografía?
+R: Edita lib/design-tokens.ts
+
+P: ¿Cómo agrego nuevas secciones?
+R: Crea components/sections/MiSección.tsx e importa en app/page.tsx
+
+P: El loop se queda atascado
+R: Normal. Máx 25 iteraciones (~20-30 min). Tras 3 sin mejora, rehace el componente.
+
+P: Lighthouse no llega a 90
+R: Pide "optimiza lighthouse del replica" y Claude aplica fixes.
+
+P: Quiero editar la réplica generada
+R: Es código editable standard Next.js. Toca lo que necesites.
+
+P: Quiero deployar
+R: cd replica && npx vercel (1 minuto en Vercel)
+
+
+DOCUMENTACIÓN COMPLETA
+======================
+
+Abre estos archivos en tu editor para más detalles:
+
+- README.md          → overview, features, stack
+- CLAUDE.md          → qué genera, requisitos, características
+- INSTRUCCIONES.md   → guía paso a paso, troubleshooting, deploy
+
+
+SOPORTE
+=======
+
+Si algo falla:
+
+1. Verifica Node.js:
+   node -v          (debe ser ≥20)
+
+2. Limpia y reinstala:
+   rm -rf node_modules .next
+   pnpm install
+
+3. Intenta de nuevo:
+   pnpm dev
+
+4. Si sigue fallando:
+   Pídele a Claude que debuggee el error exacto
+
+
+═════════════════════════════════════════════════════════════════
+
+                    ¡Listo para clonar! 🚀
+
+         cd kit-visionloop-replicator && claude
+
+═════════════════════════════════════════════════════════════════

@@ -1,0 +1,40 @@
+{
+  "domain": "virya-energy.com",
+  "language_path": "/en",
+  "current_page": "/en/",
+  "languages": ["en", "fr", "pl"],
+  "available_pages": [
+    { "url": "/en/", "label": "Home", "type": "homepage", "navbar": true },
+    { "url": "/en/about-us/", "label": "About Us", "type": "main", "navbar": true },
+    { "url": "/en/projects/", "label": "Projects", "type": "main", "navbar": true },
+    { "url": "/en/news/", "label": "News", "type": "main", "navbar": true },
+    { "url": "/en/resources/", "label": "Resources", "type": "main", "navbar": true },
+    { "url": "/en/careers/", "label": "Careers", "type": "main", "navbar": true },
+    { "url": "/en/cooperatives/", "label": "Cooperatives", "type": "main", "navbar": true },
+    { "url": "/contact/", "label": "Build with us", "type": "cta", "navbar": true },
+    { "url": "/en/our-expertise/wind-energy/", "label": "Wind Energy", "type": "expertise", "navbar": true, "parent": "Our Expertise" },
+    { "url": "/en/our-expertise/solar-energy/", "label": "Solar Energy", "type": "expertise", "navbar": true, "parent": "Our Expertise" },
+    { "url": "/en/our-expertise/hydrogen-development/", "label": "Hydrogen Development", "type": "expertise", "navbar": true, "parent": "Our Expertise" },
+    { "url": "/en/our-expertise/service-companies/", "label": "Service Companies", "type": "expertise", "navbar": true, "parent": "Our Expertise" },
+    { "url": "/en/our-expertise/energy-supply/", "label": "Energy Supply", "type": "expertise", "navbar": true, "parent": "Our Expertise" },
+    { "url": "/en/your-activity/manufacturing-operations/", "label": "Manufacturing Operations", "type": "activity", "navbar": true, "parent": "Your Activity" },
+    { "url": "/en/your-activity/logistics-service-providers/", "label": "Logistics Service Providers", "type": "activity", "navbar": true, "parent": "Your Activity" },
+    { "url": "/en/your-activity/retail-businesses/", "label": "Retail Businesses", "type": "activity", "navbar": true, "parent": "Your Activity" },
+    { "url": "/en/your-activity/landowners/", "label": "Solutions for Landowners", "type": "activity", "navbar": true, "parent": "Your Activity" },
+    { "url": "/en/your-activity/local-communities/", "label": "Local Communities", "type": "activity", "navbar": true, "parent": "Your Activity" }
+  ],
+  "footer_links": [
+    { "url": "/privacy-policy/", "label": "Privacy Policy" },
+    { "url": "/cookie-policy-eu/", "label": "Cookie Policy" }
+  ],
+  "social_links": [
+    { "url": "https://be.linkedin.com/company/virya-energy", "label": "LinkedIn" }
+  ],
+  "suggested_order": [
+    "/en/",
+    "/en/about-us/",
+    "/en/our-expertise/wind-energy/",
+    "/en/projects/",
+    "/en/news/"
+  ]
+}

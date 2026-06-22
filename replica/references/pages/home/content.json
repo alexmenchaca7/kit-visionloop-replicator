@@ -1,0 +1,233 @@
+{
+  "page": "home",
+  "url": "https://virya-energy.com/en/",
+  "language": "en",
+  "brand": {
+    "name": "Virya Energy",
+    "tagline": "Fit For Purpose Energy",
+    "languages": ["en", "fr", "pl"]
+  },
+  "sections": [
+    {
+      "id": "navbar",
+      "type": "shared/navbar",
+      "logo_label": "Virya Energy",
+      "primary_cta": "Build with us",
+      "primary_cta_href": "/contact/",
+      "dropdowns": [
+        {
+          "label": "Our expertise",
+          "items": [
+            { "label": "Wind Energy", "href": "/our-expertise/wind-energy/" },
+            { "label": "Solar Energy", "href": "/our-expertise/solar-energy/" },
+            { "label": "Hydrogen development", "href": "/our-expertise/hydrogen-development/" },
+            { "label": "Service companies", "href": "/our-expertise/service-companies/" },
+            { "label": "Energy supply", "href": "/our-expertise/energy-supply/" }
+          ]
+        },
+        {
+          "label": "Your activity",
+          "items": [
+            { "label": "Manufacturing operations", "href": "/your-activity/manufacturing-operations/" },
+            { "label": "Logistics Service Providers", "href": "/your-activity/logistics-service-providers/" },
+            { "label": "Retail Businesses", "href": "/your-activity/retail-businesses/" },
+            { "label": "Solutions for landowners", "href": "/your-activity/landowners/" },
+            { "label": "Local Communities", "href": "/your-activity/local-communities/" }
+          ]
+        }
+      ],
+      "links": [
+        { "label": "About Us", "href": "/about-us/" },
+        { "label": "Resources", "href": "/resources/" },
+        { "label": "News", "href": "/news/" },
+        { "label": "Cooperatives", "href": "/cooperatives/" },
+        { "label": "Careers", "href": "/careers/" },
+        { "label": "Projects", "href": "/projects/" }
+      ]
+    },
+    {
+      "id": "hero",
+      "type": "hero",
+      "eyebrow": "Energy",
+      "headline": "We develop sustainable energy solutions",
+      "body": "Virya Energy develops, finances, constructs, and operates sustainable energy assets. We accelerate the energy transition by scaling new technologies across the sustainable energy ecosystem. By delivering 'fit for purpose energy,' we ensure our renewable solutions match each client's specific needs, scale, and operational rhythms. We provide renewable energy in the right form, exactly when needed.",
+      "ctas": [
+        { "label": "Build with us", "href": "/contact/", "variant": "primary" },
+        { "label": "Discover our work", "href": "/en/projects/", "variant": "secondary" }
+      ]
+    },
+    {
+      "id": "expertise-grid",
+      "type": "feature-cards",
+      "heading": "Our expertise",
+      "cards": [
+        {
+          "title": "Community-centered wind energy development.",
+          "body": "We finance, develop and operate onshore wind energy projects, centred around community interests and environmental stewardship.",
+          "link_label": "Wind Energy",
+          "href": "/en/our-expertise/wind-energy/",
+          "icon": "wind"
+        },
+        {
+          "title": "Large and medium scale solar and agrovoltaic solutions.",
+          "body": "Our industrial-scale solar projects and innovative agrovoltaic solutions are seamlessly integrated with local grid systems.",
+          "link_label": "Solar Energy",
+          "href": "/en/our-expertise/solar-energy/",
+          "icon": "sun"
+        },
+        {
+          "title": "Pioneering of renewable hydrogen production.",
+          "body": "We lead in RFNBO hydrogen development, adding an essential component to the zero-emission energy landscape.",
+          "link_label": "Hydrogen development",
+          "href": "/en/our-expertise/hydrogen-development/",
+          "icon": "atom"
+        },
+        {
+          "title": "Enabling the transition for everyone.",
+          "body": "Through our DATS 24 brand, we provide a network of fueling stations, green energy contracts for homes and EV charging parks ensuring clean energy accessibility for all.",
+          "link_label": "Energy supply",
+          "href": "/en/our-expertise/energy-supply/",
+          "icon": "plug"
+        },
+        {
+          "title": "Comprehensive energy infrastructure monitoring.",
+          "body": "Our infrastructure monitoring services ensure optimal performance of energy installations on land and sea.",
+          "link_label": "Service companies",
+          "href": "/en/our-expertise/service-companies/",
+          "icon": "activity"
+        },
+        {
+          "title": "Tailor made, fit for purpose B2B sustainable energy solutions",
+          "body": "We guide our B2B clients in their energy transition, with minimum disruption, through a frictionless integration of behind-the-meter solutions.",
+          "link_label": "Your Activity",
+          "href": "/en/your-activity/manufacturing-operations/",
+          "icon": "factory"
+        }
+      ]
+    },
+    {
+      "id": "stats",
+      "type": "stats",
+      "heading": "Virya Energy in a few numbers",
+      "items": [
+        { "value": "625", "unit": "MW", "label": "Installed production capacity" },
+        { "value": "700+", "unit": "", "label": "Employees over multiple markets" },
+        { "value": "6", "unit": "", "label": "Hydrogen service stations" },
+        { "value": "15+", "unit": "", "label": "Countries with a Virya presence" }
+      ],
+      "cta": { "label": "Learn more", "href": "/en/about-us/" }
+    },
+    {
+      "id": "brand-promise",
+      "type": "promise",
+      "heading": "Our Fit For Purpose Brand Promise",
+      "body": "For Virya Energy, the energy transition must be adapted to each reality. Our 'fit for purpose' approach reflects our commitment to developing customized solutions that exactly meet everyone's needs. By simplifying access to renewable energy, we are building a path towards a sustainable future.",
+      "cta": { "label": "Learn more", "href": "/en/about-us/" }
+    },
+    {
+      "id": "worldwide",
+      "type": "map",
+      "heading": "Worldwide impact",
+      "subheading": "Present across 3 continents, in 15+ countries",
+      "metric": "100 worldwide projects",
+      "filters": ["All", "Hydrogen", "Solar", "Wind"],
+      "regions": [
+        { "name": "Asia", "count": 3 },
+        { "name": "Europe", "count": 98 }
+      ],
+      "cta": { "label": "Discover all our projects", "href": "/en/projects/" }
+    },
+    {
+      "id": "solutions-landowners",
+      "type": "solution-banner",
+      "heading": "Business solutions for Landowners",
+      "body": "For Virya Energy, the energy transition must be adapted to each reality. Our 'fit for purpose' approach reflects our commitment to developing customized solutions that exactly meet everyone's needs.",
+      "benefits": ["Space Monetization", "Predictable Income", "Carbon Footprint Reduction", "Energy Independence"],
+      "cta": { "label": "Learn more", "href": "/en/your-activity/landowners/" }
+    },
+    {
+      "id": "solutions-manufacturing",
+      "type": "solution-banner",
+      "heading": "Business solutions for Manufacturing Operations",
+      "body": "For Virya Energy, the energy transition must be adapted to each reality. Our 'fit for purpose' approach reflects our commitment to developing customized solutions that exactly meet everyone's needs.",
+      "benefits": ["Energy Cost Reduction", "Regulatory Compliance", "Energy Resilience", "Energy Independence"],
+      "cta": { "label": "Learn more", "href": "/en/your-activity/manufacturing-operations/" }
+    },
+    {
+      "id": "featured-projects",
+      "type": "project-grid",
+      "heading": "Our projects",
+      "items": [
+        { "title": "Ollignies North", "category": "Wind" },
+        { "title": "Groupe Bonnin", "category": "Solar" },
+        { "title": "HQ DRSD Malakoff", "category": "Solar" },
+        { "title": "Fresenius Kabi", "category": "Solar" },
+        { "title": "Agence Léon Grosse Aix-les Bains", "category": "Solar" },
+        { "title": "Parc de Lislet 2", "category": "Wind" }
+      ],
+      "cta": { "label": "Discover our projects", "href": "/en/projects/" }
+    },
+    {
+      "id": "latest-news",
+      "type": "news-grid",
+      "heading": "Latest news",
+      "items": [
+        {
+          "title": "Virya Energy and EBRD Partner to Accelerate Renewable Energy Expansion in Poland",
+          "categories": ["Solar", "General news"],
+          "location": "Braine L'Alleud",
+          "date": "26/02/2026",
+          "excerpt": "Virya Energy NV is pleased to announce the acceleration of its renewable energy expansion in Poland, through a strategic partnership with the European Bank for Reconstruction and Development (EBRD)…",
+          "cta": "See more"
+        },
+        {
+          "title": "Virya Energy Expands into Japan's Renewable Market through Integration of BayWa r.e.'s Japan Solar Platform",
+          "categories": ["General news", "Solar"],
+          "location": "Tokyo, Japan",
+          "date": "12/12/2025",
+          "excerpt": "Virya Energy, a prominent and trusted player in the global energy transition, today announced its formal entry into Japan's renewable power generation sector…",
+          "cta": "See more"
+        },
+        {
+          "title": "Belgium at the forefront in Europe's hydrogen mobility revolution",
+          "categories": ["Supply & Distribution"],
+          "location": "Spa-Francorchamps",
+          "date": "",
+          "excerpt": "Demonstration of hydrogen in heavy-duty transport — at the iconic Spa-Francorchamps circuit, Belgium signalled its ambition to lead Europe's hydrogen mobility transition…",
+          "cta": "See more"
+        }
+      ],
+      "cta": { "label": "See all news", "href": "/en/news/" }
+    },
+    {
+      "id": "final-cta",
+      "type": "cta-band",
+      "heading": "Start your energy transition today.",
+      "cta": { "label": "Get started", "href": "/contact/" }
+    },
+    {
+      "id": "footer",
+      "type": "shared/footer",
+      "columns": [
+        {
+          "heading": "Our expertise",
+          "items": ["Wind Energy", "Solar Energy", "Hydrogen development", "Energy supply", "Service companies"]
+        },
+        {
+          "heading": "Your Activity",
+          "items": ["Local Communities", "Logistics Service Providers", "Manufacturing operations", "Retail Businesses", "Solutions for landowners"]
+        },
+        {
+          "heading": "Company",
+          "items": ["About Us", "Resources", "News", "Cooperatives", "Careers"]
+        }
+      ],
+      "social": [{ "label": "LinkedIn", "href": "https://be.linkedin.com/company/virya-energy" }],
+      "legal": [
+        { "label": "Privacy Policy", "href": "/privacy-policy/" },
+        { "label": "Cookie Policy", "href": "/cookie-policy-eu/" }
+      ],
+      "copyright": "Copyright © 2026 Virya Energy"
+    }
+  ]
+}
